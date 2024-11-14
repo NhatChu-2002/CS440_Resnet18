@@ -25,7 +25,3 @@ CNNs are a class of deep neural networks, most commonly applied to analyzing vis
 ### Residual Network (ResNet)
 
 ResNet is a type of artificial neural network that builds on constructs known from pyramidal cells in the cerebral cortex. ResNet is a short name for a residual network, and as the name suggests, it utilizes residual blocks to make the training of deep networks easier.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

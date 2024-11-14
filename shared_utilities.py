@@ -55,9 +55,14 @@ class LightningModel(pl.LightningModule):
         self.test_acc(predicted_labels, true_labels)
         self.log("test_acc", self.test_acc)
 
+    # def configure_optimizers(self):
+    #     optimizer = torch.optim.SGD(self.parameters(), lr=self.learning_rate)
+    #     return optimizer
+    
     def configure_optimizers(self):
-        optimizer = torch.optim.SGD(self.parameters(), lr=self.learning_rate)
-        return optimizer
+        optimizer = torch.optim.SGD(self.parameters(), lr=self.learning_rate, momentum=0.9)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=3, verbose=True)
+        return {"optimizer": optimizer, "lr_scheduler": scheduler, "monitor": "val_loss"}
 
 
 class MnistDataModule(pl.LightningDataModule):
